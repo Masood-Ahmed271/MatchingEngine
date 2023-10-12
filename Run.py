@@ -1,5 +1,5 @@
 from MatchingEngine import MatchingEngine
-from Utilities import get_input_queue, send_new_order, cancel_order, get_order_book, get_executed_orders
+from Utilities import print_input_queue, send_new_order, cancel_order, print_order_book, print_executed_orders
 
 def main():
 
@@ -9,6 +9,8 @@ def main():
 
     print("")
     print("**************************************************** Welcome to the Crypto Matching Engine ****************************************************")
+    print("******************************* Assumption: Can only buy and sell from one order_id, not from multiple order_ids *******************************")
+    print("** Caution: There are no checks to handle whether you inputted the desired input in the program so be careful when inputting into the program **")
     print("")
     # Create an instance of the OrderBook
     order_book = MatchingEngine([
@@ -19,7 +21,7 @@ def main():
     ])
 
     print(SPACE, "Here is the input queue after initialization")
-    get_input_queue(order_book)
+    print_input_queue(order_book)
 
     while is_running:
         print(SPACE, "Press '1' to send a new order")
@@ -40,11 +42,11 @@ def main():
             print("")
             instrument = input(f"{SPACE}Enter the instrument (remember it is case sensitive): ")
             print("")
-            get_order_book(order_book, instrument)
+            print_order_book(order_book, instrument)
         elif user_input == '4':
-            get_input_queue(order_book)
+            print_input_queue(order_book)
         elif user_input == '5':
-            get_executed_orders(order_book)
+            print_executed_orders(order_book)
         elif user_input == 'q' or user_input == 'Q':
             is_running = False
         else:
